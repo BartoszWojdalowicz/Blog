@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+    {{ form_start(addArticleForm,{'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_row(addArticleForm.title) }}
+        {{ form_row(addArticleForm.imageFileName) }}
+        {{ form_row(addArticleForm.content) }}
+
+        {{ form_row(addArticleForm.tags, {
+            attr: {
+                'data-specific-tag-url': path('article_tag_select'),
+                'class': 'js-article',
+                'id': 'checkbox',
+                }
+            })
+        }}
+
+        <div class="js-specific-tag">
+            {%  if articleForm.specificTagName is defined or hasTag is defined and hasTag == true %}
+                {{ form_row(addArticleForm.specificTagName) }}
+            {% endif %}
+        </div>
+
+    {{ form_row(addArticleForm._token) }}
+
+    <button class="btn">Add Article</button>
+        {{ form_end(addArticleForm, {'render_rest': false}) }}
+
+{% endblock %}
+{% block javascripts %}
+
+
+    <script src="{{ asset('js/js-article.js') }}"></script>
+{% endblock %}

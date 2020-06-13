@@ -1,0 +1,136 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    {% include 'elements/header.html.twig' %}
+    {% include 'elements/slideshow.html.twig' %}
+
+
+
+
+    <div class="row">
+        <form action="" class="ml-auto my-4" method="get">
+            <label for="search" class="text-4xl font-bold mr-8 hidden"></label>
+            <input id="search" type="text" placeholder="SEARCH" >
+        </form>
+    </div>
+    <div class="articles">
+    NEWS <br>
+        <div class="newsArticle row">
+
+            <table>
+                {% for article in pagination %}
+
+                    <div class="article" style="margin-left: 3%">
+                        {% if article.filePathName %}
+                                                    <a href="{{ path('article_details', {'id':article.id}) }}">
+                                                        <img src="/uploads/article_image/{{ article.filePathName }}" class="col-mb-3" height="300" width="500" class="articleImage" >
+                                                    </a><br>
+                        {% else %}
+                                    <a href="{{ path('article_details', {'id':article.id}) }}">
+                                        <img src="/image/minion.jpg" class="col-mb-3" height="300" width="500" class="articleImage" >
+                                    </a><br>
+                        {% endif %}
+
+                        {% if article.likes != 0 %}
+                            {{ article.likes }}
+                        {% endif %}
+
+                        {% set break = false %}
+                            {% for tag in article.tags %}
+                                    {% if loop.index <= 3 and break == false %}
+                                        {{tag}}
+                                        {% elseif loop.index == 4 and break == false  %}
+                                            {% set break = true %}
+                                            <a href="">...</a>
+                                        {% else %}
+
+                                    {% endif %}
+                            {% endfor %}<br>
+                        {{ article.publishedAt|date("m/d/Y") }} <br>
+                        {{ article.title }}
+                    </div>
+                    <tr {% if loop.index is odd %}class="color"{% endif %}>
+                    </tr>
+                {% endfor %}
+            </table>
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+
+{#        {% for newArticle in newsArticles %}#}
+{#            <div class="article" style="margin-left: 3%">#}
+{#                <img src="/image/minion.jpg" class="col-mb-3" height="300" width="500" class="articleImage" ><br>#}
+{#                {% if newArticle.likes != 0 %} {{ newArticle.likes }}{% endif %}#}
+{#                {% for tag in newArticle.tags %}#}
+{#                {{tag}}#}
+{#                {% endfor %}#}
+{#                {{ newArticle.publishedAt|date("m/d/Y") }} <br>#}
+{#                {{ newArticle.title }}#}
+{#            </div>#}
+{#        {% endfor %}#}
+        </div><br>
+    PROGRAMING <br>
+        <div class="programingArticle row" >
+            <div class="article" style="margin-left: 3%">
+                <img src="/image/minion.jpg" class="col-mb-3" height="300" width="500" class="articleImage" ><br>
+                tagi lajki  data publikacji <br>
+                Tytuł
+            </div>
+
+            <div class="article">
+                <img src="/image/minion.jpg" class="col-mb-3" height="300" width="500" class="articleImage"><br>
+                tagi lajki  data publikacji <br>
+                Tytuł
+            </div>
+            <div class="article">
+                <img src="/image/minion.jpg" class="col-mb-3" height="300" width="500" class="articleImage"><br>
+                tagi lajki  data publikacji <br>
+                Tytuł
+            </div>
+        </div><br>
+    MEALS <br>
+        <div class="mealsArticle row">
+            <div class="article" style="margin-left: 3%">
+                <img src="/image/minion.jpg" class="col-mb-3" height="300" width="500" class="articleImage" ><br>
+                tagi lajki  data publikacji <br>
+                Tytuł
+            </div>
+
+            <div class="article">
+                <img src="/image/minion.jpg" class="col-mb-3" height="300" width="500" class="articleImage"><br>
+                tagi lajki  data publikacji <br>
+                Tytuł
+            </div>
+            <div class="article">
+                <img src="/image/minion.jpg" class="col-mb-3" height="300" width="500" class="articleImage"><br>
+                tagi lajki  data publikacji <br>
+                Tytuł
+            </div>
+        </div><br>
+    DRINK <br>
+        <div class="travelArticle row">
+            <div class="article" style="margin-left: 3%">
+                <img src="/image/minion.jpg" class="col-mb-3" height="300" width="500" class="articleImage" ><br>
+                tagi lajki  data publikacji <br>
+                Tytuł
+            </div>
+
+            <div class="article">
+                <img src="/image/minion.jpg" class="col-mb-3" height="300" width="500" class="articleImage"><br>
+                tagi lajki  data publikacji <br>
+                Tytuł
+            </div>
+            <div class="article">
+                <img src="/image/minion.jpg" class="col-mb-3" height="300" width="500" class="articleImage"><br>
+                tagi lajki  data publikacji <br>
+                Tytuł
+            </div>
+        </div>
+    </div>
+    <br>
+    {% include 'elements/footer.html.twig' %}
+
+
+{% endblock %}

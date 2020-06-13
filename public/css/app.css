@@ -1,0 +1,55 @@
+/*Header*/
+.leftMenu, .rightMenu{
+    display:inline-block;
+    list-style: none;
+    text-align: justify;
+    margin-top: 3%;
+    margin-bottom: 7%;
+    font-family: 'Teko', sans-serif;
+    font-size: 150%;
+}
+
+.headerLogo {
+    color:black;
+    font-size: 800%;
+    font-family: 'Teko', sans-serif;
+    margin-left: 1%;
+}
+
+/*Footer*/
+.footer {
+    color: white;
+    background-color: black;
+    font-family: 'Teko', sans-serif;
+}
+.footerLogo {
+    color: white;
+    display: block;
+    font-size: 600%;
+}
+.footerMenu{
+    display:inline-block;
+    list-style: none;
+}
+
+/*MainPageArticles*/
+.articles {
+    font-family: 'Teko', sans-serif;
+    font-size: 250%;
+}
+
+.article{
+    margin-right:5%;
+}
+.tagsBorder {
+    border: 5px outset #1C6EA4;
+    border-radius: 40px 40px 40px 40px;
+}
+.tags{
+    font-family: 'Teko', sans-serif;
+    font-size: 150%;
+}
+
+.like-o {
+    background: red;
+}

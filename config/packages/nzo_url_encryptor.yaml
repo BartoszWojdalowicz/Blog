@@ -1,0 +1,5 @@
+nzo_url_encryptor:
+  secret_key:         '%env(SECRET_KEY)%'    # optional, max length of 100 characters.
+  secret_iv:          '%env(SECRET_IV)%'        # optional, max length of 100 characters.
+  cipher_algorithm:   '%env(ALGORITHM)%'               # optional, default: 'aes-256-ctr'
+

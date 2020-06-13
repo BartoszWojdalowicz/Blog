@@ -1,0 +1,33 @@
+{% extends 'baseTemplate.html.twig' %}
+
+{% block statement %}
+    {{ article.title }}<br><br><br>
+    {{ article.content|raw }}<br>
+    {{ article.author.name }}<br>
+    {{ article.publishedAt }}
+<br><br>
+    <div class="article-likes">
+        <span class="article-likes-count">{{article.likes}}</span>
+        <a href="{{ path('article_like',{id : article.id})}}" class="fas fa-heart article-like" ></a>
+    </div>
+
+    <br><br>
+    {{ form_start(addCommentForm) }}
+    {{ form_row(addCommentForm.content) }}
+    <button class="btn">Add</button>
+    {{ form_end(addCommentForm) }}
+    <br>
+    {% for comment in comments %}
+        {{ comment.author.name }}
+        {{ comment.publishedAt|date }}<br>
+        {{ comment.content }}
+    {% endfor %}
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/javascript.js') }}"></script>
+{% endblock %}
+
+
+

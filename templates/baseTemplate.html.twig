@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <header>
+        <div class="row" style="background-color: darkslateblue">
+            <div class="headerLogo col-md-8" style="display: block">
+                PHPost
+            </div>
+            <div class="col-md-4" style="background-color: darkslateblue"></div>
+        </div>
+    </header>
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="content col-md-10"><br>
+            <h3>{% block statement %}
+            {% endblock %}</h3>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+

@@ -1,0 +1,30 @@
+{% extends "/base.html.twig" %}
+    {% block stylesheets %}{% endblock %}
+
+{% block body %}
+    <header>
+        <div class="row">
+            <div class="headerLogo col-md-8" style="display: block">
+                PHPost
+            </div>
+
+        <nav id="topNavbar" class="col-md-4 row">
+            <div class="col-md-2"> </div>
+            <div class="col-md-2"> </div>
+
+            <ul class="rightMenu list-group col-md-4">
+                {% if is_granted('ROLE_USER') == true %}
+                    <li class="rightMenu-4"><a href="/logout">logout</a></li>
+                    <li class="rightMenu-4"><a href="/article/add">add article</a></li>
+                {% else %}
+                    <li class="rightMenu-1"><a href="/register">register</a></li>
+                    <li class="rightMenu-2"><a href="/login">log in</a></li>
+                {% endif %}
+
+            </ul>
+        </nav>
+        </div>
+    </header>
+{% endblock %}
+{% block javascripts %}{% endblock %}
+

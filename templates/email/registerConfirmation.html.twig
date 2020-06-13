@@ -1,0 +1,16 @@
+{% extends "email/baseEmailTemplate.html.twig" %}
+
+{% block emalibody %}
+
+  <div class="row tittle">
+    <div class="col-md-3"></div>
+    <div class="col-md-6"><h3>witaj {{ userName}}!</h3></div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row content">
+    <div class="col-md-3"></div>
+    <div class="col-md-6"><h3> Aby potwierdzić rejestrację należy udać się pod <a href="{{ confirmationUrl }}">ten adres</a> </h3></div>
+    <div class="col-md-3"></div>
+  </div>
+
+{% endblock %}

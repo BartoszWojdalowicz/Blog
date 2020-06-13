@@ -1,0 +1,24 @@
+{% extends 'baseTemplate.html.twig' %}
+
+{% block statement %}
+    {% for article in articles %}
+        <table class="blueTable" style="width: 100%; font-size: 20px">
+            <tbody>
+            <tr class="articlesTables" >
+                <td style="width: 70%">{{ article.title }}</td>
+                <td style="width: 20%">{{ article.author.name }}</td>
+                <td style="width: 10%">
+                    <a href="{{ path('article_details', {id: article.id}) }}"><i class="fas fa-search"></i></a>
+                    {%if article.author.email==app.user.username%}
+                        <a href="{{ path('edit_article', {article: article.id}) }}"><i class="fas fa-edit"></i></a>
+                        <a href="{{ path('article_delete', {article: article.id}) }}"><i class="fas fa-trash-alt"></i></a>
+                    {% endif %}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    {% endfor %}
+{% endblock %}
+
+
+
