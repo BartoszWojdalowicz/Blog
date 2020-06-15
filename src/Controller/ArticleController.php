@@ -112,7 +112,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/edit/{article}", name="edit_article")
      */
-    public function edit(Request $request,ArticleRepository $articleRepository,Article $article, TagsRepository $tagsRepository)
+    public function edit(Request $request,Article $article, TagsRepository $tagsRepository)
     {
         $form = $this->createForm(AddArticleFormType::class, $article);
         $articleTags=$article->getTags()->getValues();
@@ -154,7 +154,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/delete/{article}", name="article_delete")
      */
-    public function DeleteArticle(ArticleRepository $articleRepository,Article $article)
+    public function DeleteArticle(Article $article)
     {
 
         if($this->isGranted('OWNER',$article)){

@@ -54,7 +54,7 @@ class LoginController extends AbstractController
     /**
      * @Route("/forgotPassword", name="forgot_password")
      */
-    public function forgotPassword( Request $request, MailerInterface $mailer,UserRepository $repository)
+    public function forgotPassword( Request $request, MailerInterface $mailer)
     {
 
 

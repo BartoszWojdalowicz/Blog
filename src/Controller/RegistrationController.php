@@ -112,7 +112,7 @@ class RegistrationController extends AbstractController
      * @Route("/register/generate/confirmation/{email}", name="generate_confirmation_mail")
      * @ParamEncryptor(params="email")
      */
-    public function generateConfirmationMail($email, Request $request, MailerInterface $mailer)
+    public function generateConfirmationMail($email, MailerInterface $mailer)
     {
 
         $confirmationURL = $this->generateUrl('confirm_registration',
@@ -132,7 +132,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register/pleaseConfirmEmail/", name="waiting_for_confirm")
      */
-    public function pleasConfirmRegistration(Request $request)
+    public function pleasConfirmRegistration()
     {
         return $this->render('registration/waitingForConfirm.html.twig');
     }
