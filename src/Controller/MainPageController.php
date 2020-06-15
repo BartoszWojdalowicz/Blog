@@ -21,7 +21,7 @@ class MainPageController extends AbstractController
         $pagination = $paginator->paginate(
             $articleRepository->findArticleToPaginator(),
             $request->query->getInt('page', 1),
-            3
+            2
         );
 
         return $this->render('main_page/index.html.twig',

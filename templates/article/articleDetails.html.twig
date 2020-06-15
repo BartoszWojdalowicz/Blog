@@ -10,6 +10,7 @@
         <span class="article-likes-count">{{article.likes}}</span>
         <a href="{{ path('article_like',{id : article.id})}}" class="fas fa-heart article-like" ></a>
     </div>
+    {% if is_granted('ROLE_USER') == true %}
 
     <br><br>
     {{ form_start(addCommentForm) }}
@@ -17,6 +18,7 @@
     <button class="btn">Add</button>
     {{ form_end(addCommentForm) }}
     <br>
+    {% endif %}
     {% for comment in comments %}
         {{ comment.author.name }}
         {{ comment.publishedAt|date }}<br>

@@ -33,8 +33,12 @@ class ArticleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            /** @var UploadedFile $uploadedFile */
+            $article=$form->getData();
+
+
+                /** @var UploadedFile $uploadedFile */
             $uploadedFile = $form['imageFileName']->getData();
+
             if ($uploadedFile) {
                 $destination = $this->getParameter('kernel.project_dir') . '/public/uploads/article_image';
                 $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
@@ -46,17 +50,18 @@ class ArticleController extends AbstractController
                 $article->setFilePathName($newFilename);
             }
             $specificTags=$request->request->get("add_article_form");
-            $article=$form->getData();
             $article->setAuthor($this->getUser());
-            if (isset($specificTags["specificTagName"])) {
-                foreach ($specificTags["specificTagName"] as $tag) {
-                    $tag = $this->getDoctrine()->getRepository(Tags::class)->find($tag);
-                    $article->addTag($tag);
+                if (isset($specificTags["specificTagName"])) {
+                    foreach ($specificTags["specificTagName"] as $tag) {
+                        $tag = $this->getDoctrine()->getRepository(Tags::class)->find($tag);
+                        $article->addTag($tag);
+                    }
                 }
-            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($article);
             $entityManager->flush();
+
+            return $this->redirectToRoute('main_page');
         }
 
         return $this->render('article/index.html.twig', [
@@ -162,7 +167,6 @@ class ArticleController extends AbstractController
                 $article->removeComment($comment);
             }
             $entityManager->remove($article);
-dd("Chujowo");
             $entityManager->flush();
             return $this->redirect($_SERVER['HTTP_REFERER']);
 
